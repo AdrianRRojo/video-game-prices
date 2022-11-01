@@ -48,6 +48,7 @@ As a user, I want to use VGP as a chrome extension
 
 ### Installation instructions
 --- 
+To run this program locally: 
 - Fork and clone this repo.
 - run ``` npm i ``` / This will download the packages required to run this program
 - run server using ```npm start``` / This will launch the site on localhost/3000
