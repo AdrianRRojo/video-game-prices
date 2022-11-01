@@ -3,7 +3,7 @@
 
 ## Description
 ---
-VGP is the first project I have created after graduating from General Assembly's Software Engineering Immersive course. The purpose of VGP is the find gamers the lowest possible price on their upcoming purchases. VGP will live both as a standalone website and as a chrome extension, future plans for VGP include creating an ios and android version. VGP accomplishes it's goal of finding prices by displaying prices of a specific game at multiple retailers.
+VGP is my first project, that I have created after graduating from General Assembly's Software Engineering Immersive course. The purpose of VGP is the find gamers the lowest possible price on their upcoming purchases. VGP will live both as a standalone website and as a chrome extension, future plans for VGP include creating an ios and android version. VGP accomplishes it's goal of finding the lowest possible prices by searching multiple retailers for a specific game and displaying the prices to the user.
 
 ## Wireframe
 --- 
@@ -16,7 +16,7 @@ VGP is the first project I have created after graduating from General Assembly's
 
 - VGP's chrome extension
 
-<img width="997" alt="VGP chrome extension" src="https://user-images.githubusercontent.com/108231637/199335071-175fd78f-c04e-4c0b-b945-d4485bc41c9d.png">
+<img width="750" alt="VGP chrome extension" src="https://user-images.githubusercontent.com/108231637/199335071-175fd78f-c04e-4c0b-b945-d4485bc41c9d.png">
 
 ## Minimum Viable product (MVP)
 ---
@@ -30,11 +30,12 @@ VGP is the first project I have created after graduating from General Assembly's
 - [ ] Allow for users to create a "wish list"
 - [ ] Keep track of users purchases, incase they need to request a refund / maintain reciepts in one location.
 - [ ] Create a friends list / messaging system.
+- [ ] Create a smartphone application for both IOS and Android, (Will not be created until after the site is deployed live)
 
 ## User Story
 ---
-As a user, I want to view pricing at multiple retailers at once
-As a user, I want to see "Best time to buy"
+As a user, I want to view pricing at multiple retailers in one location
+As a user, I want to see the "Best time to buy"
 As a user, I want to use VGP as a chrome extension
 
 ### Technology used
