@@ -3,14 +3,13 @@ import './App.css';
 import React from 'react';
 import {Routes, Route} from 'react'
 import {useState, useEffect} from'react'
-import { Link } from 'react-router-dom'
+import { Form, Link } from 'react-router-dom'
 
 import axios from 'axios'
 
 
-import Home from './components/pages/Home';
-import Landing from './components/pages/Landing';
-import Results from './components/pages/Results';
+
+
 
 
 
@@ -19,17 +18,23 @@ function App() {
   const [apiResponse, setApiResponse] = useState([])
 
   //Users search query
-  const [searchQuery, setSearchQuery] = useState('State not set.')
+  const [searchQuery, setSearchQuery] = useState('')
 
   // saved to read later
   const [readLater, setReadLater] = useState([])
   
   // controlled input 
   const [inputValue, setInputValue] = useState('')
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchQuery(e.target.value);
+  };
+  
   useEffect(() => {
     const getDeals = async () => {
       try{
-        const url = `https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15`
+        const url = `https://www.cheapshark.com/api/1.0/games?title=${searchQuery}`
         const response = await axios.get(url)
         console.log(response.data)
         setApiResponse([...apiResponse, ...response.data])
@@ -43,23 +48,14 @@ function App() {
   return (
     
     <div className="App">
-      <main>
-        <Routes>
-          
-        <Route path="/" element={
-              <Home 
-                // apiResponse={apiResponse} 
-                // inputValue={inputValue} 
-                // setInputValue={setInputValue} 
-                // setSearchQuery={setSearchQuery} 
-                // readLater={readLater}
-                // setReadLater={setReadLater}
-              />
-        }
-        />
-        {/* <Route path='/results/:id' element={ <Results apiResponse={apiResponse}/>} /> */}
-        </Routes>
-      </main>
+      <h1>HOME</h1>
+      <input
+        type="text"
+        placeholder="Search here"
+        onChange={handleChange}
+        value={searchQuery} />
+
+
     </div>
   );
 }
