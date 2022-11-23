@@ -1,17 +1,14 @@
-import './App.css';
 
 import React from 'react';
-import {Routes, Route} from 'react'
+import {Routes, Route} from 'react-router-dom'
 import {useState, useEffect} from'react'
-import { Form, Link } from 'react-router-dom'
+
 
 import axios from 'axios'
+import './App.css';
 
-
-
-
-
-
+import GamePage from './components/pages/GamePage';
+import SearchPage from './components/pages/SearchPage';
 
 function App() {
   //Response from API
@@ -48,14 +45,27 @@ function App() {
   return (
     
     <div className="App">
-      <h1>HOME</h1>
-      <input
-        type="text"
-        placeholder="Search here"
-        onChange={handleChange}
-        value={searchQuery} />
-
-
+     <main>
+      <Routes>
+        <Route path="/" element={
+          <SearchPage 
+            apiResponse={apiResponse}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            setSearchQuery={setSearchQuery}
+            readLater={readLater}
+            setReadLater={setReadLater}  
+          />
+        }
+        />
+        <Route path="/game/:id" element={
+          <GamePage 
+            apiResponse={apiResponse}
+          />
+        }
+        />
+      </Routes>
+     </main>
     </div>
   );
 }
