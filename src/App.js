@@ -18,7 +18,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
 
   // saved to read later
-  const [readLater, setReadLater] = useState([])
+  const [watchList, setWatchList] = useState([])
   
   // controlled input 
   const [inputValue, setInputValue] = useState('')
@@ -53,8 +53,8 @@ function App() {
             inputValue={inputValue}
             setInputValue={setInputValue}
             setSearchQuery={setSearchQuery}
-            readLater={readLater}
-            setReadLater={setReadLater}  
+            watchList={watchList}
+            setWatchList={setWatchList}  
           />
         }
         />

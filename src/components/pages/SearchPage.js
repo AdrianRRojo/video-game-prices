@@ -7,22 +7,29 @@ function SearchPage(props){
         return(
             <div key={`games${i}`}>
                 <Link to={`/game/${i}`}>
-                    <h2>{game.title}</h2>
-                </Link>
+                    <img 
+                        src={game.thumb} 
+                    />
+                    <h2>{game.external}</h2>
+                    </Link>
+                    <p> cheapest price! {game.cheapest}</p> 
+                
 
                 <div>
-                    <button onClick={() => props.readLater([...props.readLater, {id: i, game}])}>Button</button>
+                    {/* //! Add Watch list later */}
+                    {/* <button onClick={() => props.setWatchList([...props.watchList, {id: i, game}])}>Add to your watch list</button> */}
                 </div>
             </div>
         )
     })
-   const ReadLaters = props.readLater.map(readLater => {
-    return(
-        <li key={`readLater${readLater.id}`}>
-            <Link to={`/game/${readLater.id}`}>{readLater.game.title}</Link>
-        </li>
-    )
-   })
+    {/* //! Add Watch list later */}
+//    const watchList = props.watchList.map(watchList => {
+//     return(
+//         <li key={`WatchList${watchList.id}`}>
+//             <Link to={`/game/${watchList.id}`}>{watchList.game.title}</Link>
+//         </li>
+//     )
+//    })
    const handleSubmit = e => {
     e.preventDefault()
     props.setSearchQuery(props.inputValue)
@@ -39,9 +46,12 @@ return(
             />
             <button type='submit'>Search</button>
         </form>
-        <ul>
-            {ReadLaters}
-        </ul>
+        {/* //! Add Watch list later */}
+        {/* <ul>
+            <h1>Watch List</h1>
+            {watchList}
+           { console.log("Watch List", watchList )}
+        </ul> */}
         <h2>Games:</h2>
         {games}
     </div>
