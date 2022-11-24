@@ -7,8 +7,9 @@ import axios from 'axios'
 
 function GamePage(props){
     // Cheapshark Game ID 
-    const [idResponse,setIdResponse] = useState([])
+    // const [idResponse,setIdResponse] = useState([])
     const [price, setPrice] = useState("")
+    const [deals, setDeals] =useState([])
 
     const {id} = useParams()
     const game = props.apiResponse[id]
@@ -20,18 +21,19 @@ useEffect(() =>{
             const url = `https://www.cheapshark.com/api/1.0/games?id=${game.gameID}`
             const response = await axios.get(url)
             console.log('response ',response.data)
-            setIdResponse([response.data])
-            // console.log(idResponse)
-            setPrice (response.data.cheapestPriceEver.price)
-            console.log('price', price)
+            const rd = response.data
+            setPrice (rd.cheapestPriceEver.price)
+            // console.log('price', price)
+            setDeals([rd.deals[0].retailPrice])
+            
         }catch(err){
             console.warn(err)
         }
     }
     getId()
-    // console.log('id ',idResponse)
     // console.log('price-2', price)
 }, [])
+
 
     if(!game){
         return(
@@ -40,12 +42,13 @@ useEffect(() =>{
     }
     return(
         <div>
-            <h1>Game Page</h1>
+            {/* <h1>Game Page</h1> */}
             <h2>{game.external}</h2>
             <img src={game.thumb}/>
-            <p>{price} </p>
+            <p>Retail: {deals}</p>
+            <p>Current price: {price} </p>
             
-            <a href='' ></a>
+            {/* <a href='' ></a> */}
         </div>
     )
 }
