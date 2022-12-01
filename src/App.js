@@ -11,6 +11,9 @@ import GamePage from './components/pages/GamePage';
 import SearchPage from './components/pages/SearchPage';
 
 function App() {
+
+  const c = console.log.bind(document)
+
   //Response from API
   const [apiResponse, setApiResponse] = useState([])
 
@@ -33,7 +36,7 @@ function App() {
       try{
         const url = `https://www.cheapshark.com/api/1.0/games?title=${searchQuery}`
         const response = await axios.get(url)
-        console.log(response.data)
+        c(response.data)
         setApiResponse([...apiResponse, ...response.data])
       }catch(err){
         console.warn(err)

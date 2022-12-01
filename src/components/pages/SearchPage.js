@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+// "c" replaces "console.log"
+const c = console.log.bind(document)
 
 function SearchPage(props){
     const games = props.apiResponse.map((game, i) => {
@@ -12,13 +14,12 @@ function SearchPage(props){
                     />
                     <h2>{game.external}</h2>
                     </Link>
-                    <p> cheapest price! {game.cheapest}</p> 
-                
+                    <p> cheapest price! {game.cheapest}</p>  
 
-                <div>
+                {/* <div>
                     {/* //! Add Watch list later */}
-                    {/* <button onClick={() => props.setWatchList([...props.watchList, {id: i, game}])}>Add to your watch list</button> */}
-                </div>
+                    {/* <button onClick={() => props.setWatchList([...props.watchList, {id: i, game}])}>Add</button> */}
+                
             </div>
         )
     })
@@ -30,13 +31,14 @@ function SearchPage(props){
 //         </li>
 //     )
 //    })
+
    const handleSubmit = e => {
     e.preventDefault()
     props.setSearchQuery(props.inputValue)
 }
 return(
     <div>
-        <h2>SEARCH RESULTS</h2>
+        &nbsp;
         <form onSubmit={handleSubmit}>
             <label htmlFor='input'>Search:</label>
             <input 
@@ -46,12 +48,14 @@ return(
             />
             <button type='submit'>Search</button>
         </form>
+        
         {/* //! Add Watch list later */}
         {/* <ul>
             <h1>Watch List</h1>
             {watchList}
-           { console.log("Watch List", watchList )}
+           { c("Watch List", watchList )}
         </ul> */}
+
         <h2>Games:</h2>
         {games}
     </div>

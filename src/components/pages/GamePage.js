@@ -9,21 +9,32 @@ function GamePage(props){
     // Cheapshark Game ID 
     // const [idResponse,setIdResponse] = useState([])
     const [price, setPrice] = useState("")
+
+    // Cheapest 
     const [deals, setDeals] =useState([])
 
     const {id} = useParams()
     const game = props.apiResponse[id]
 
-    // console.log(game)
+
+    // Setting a new variable ,c, to console.log to reduce typing console.log over and over again.
+  const c = console.log.bind(document)
+    c(game)
+
+    // Specific Game lookup using games ID provided by CheapShark API
 useEffect(() =>{
     const getId = async() => {
         try{
             const url = `https://www.cheapshark.com/api/1.0/games?id=${game.gameID}`
             const response = await axios.get(url)
-            console.log('response ',response.data)
+            c('response ',response.data)
+
             const rd = response.data
+
             setPrice (rd.cheapestPriceEver.price)
-            // console.log('price', price)
+
+            // Checking to see if the price variable was changed to match data.
+            // c('price', price)
             setDeals([rd.deals[0].retailPrice])
             
         }catch(err){
@@ -31,7 +42,7 @@ useEffect(() =>{
         }
     }
     getId()
-    // console.log('price-2', price)
+    // c('price-2', price)
 }, [])
 
 
