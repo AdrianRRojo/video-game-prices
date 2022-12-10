@@ -57,7 +57,7 @@ function App() {
             setInputValue={setInputValue}
             setSearchQuery={setSearchQuery}
             watchList={watchList}
-            setWatchList={setWatchList}  
+            setWatchList={setWatchList} 
           />
         }
         />
@@ -68,6 +68,9 @@ function App() {
         }
         />
       </Routes>
+       {/* <h1 className="text-3xl font-bold underline text-purple-400">
+      Hello world! home page
+    </h1> */}
      </main>
     </div>
   );
