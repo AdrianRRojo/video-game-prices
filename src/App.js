@@ -21,7 +21,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
 
   // saved to read later
-  const [watchList, setWatchList] = useState([])
+  // const [watchList, setWatchList] = useState([])
   
   // controlled input 
   const [inputValue, setInputValue] = useState('')
@@ -49,18 +49,18 @@ function App() {
 
   //* New API
   useEffect(() => {
-    const getDeals = async() => {
+    const getGames = async() => {
       try{
         const url = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}`
         const response = await axios.get(url)
         c("Response data", response.data)
         setApiResponse([...apiResponse,...response.data.results])
-        c("Api Response data", apiResponse)
+        c("Api Response", apiResponse)
       }catch(err){
         c(err)
       }
     }
-    getDeals()
+    getGames()
   },[searchQuery])
 
   return (
@@ -74,8 +74,8 @@ function App() {
             inputValue={inputValue}
             setInputValue={setInputValue}
             setSearchQuery={setSearchQuery}
-            watchList={watchList}
-            setWatchList={setWatchList} 
+            // watchList={watchList}
+            // setWatchList={setWatchList} 
           />
         }
         />

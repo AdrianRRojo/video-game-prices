@@ -20,12 +20,13 @@ function GamePage(props){
     // Setting a new variable ,c, to console.log to reduce typing console.log over and over again.
   const c = console.log.bind(document)
     c(game)
+    c("ID -" ,game.id)
 
     // Specific Game lookup using games ID provided by CheapShark API
 useEffect(() =>{
     const getId = async() => {
         try{
-            const url = `https://www.cheapshark.com/api/1.0/games?id=${game.gameID}`
+            const url = `https://api.rawg.io/api/games/${game.id}?key=${process.env.REACT_APP_API_KEY}`
             const response = await axios.get(url)
             c('response ',response.data)
 
@@ -55,7 +56,10 @@ useEffect(() =>{
         <div>
             {/* <h1>Game Page</h1> */}
             <h2>{game.external}</h2>
-            <img src={game.thumb}/>
+            <img 
+                src={game.background_image}
+                
+            />
             <p>Retail: {deals}</p>
             <p>Current price: {price} </p>
             

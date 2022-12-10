@@ -12,11 +12,11 @@ function SearchPage(props){
                 <Link to={`/game/${i}`}>
                     <img 
                         src={game.background_image}
-                        alt={game.external} 
+                        alt={game.name} 
                     />
-                    <h2>{game.external}</h2>
+                    <h2>{game.name}</h2>
                     </Link>
-                    <p> cheapest price! {game.cheapest}</p>  
+                    <p>{game.rating}</p>  
 
                 {/* <div>
                     {/* //! Add Watch list later */}
