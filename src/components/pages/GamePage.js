@@ -11,10 +11,15 @@ function GamePage(props){
     const [price, setPrice] = useState("")
 
     // Cheapest 
-    const [deals, setDeals] =useState([])
+    const [deals, setDeals] = useState([])
+
+    // Color
+    const [color, setColor]= useState("")
 
     const {id} = useParams()
     const game = props.apiResponse[id]
+
+    
 
 
     // Setting a new variable ,c, to console.log to reduce typing console.log over and over again.
@@ -33,6 +38,7 @@ useEffect(() =>{
             const rd = response.data
 
             setPrice (rd.cheapestPriceEver.price)
+            setColor(rd.dominant_color)
 
             // Checking to see if the price variable was changed to match data.
             // c('price', price)
@@ -46,25 +52,35 @@ useEffect(() =>{
     // c('price-2', price)
 }, [])
 
-
+c('desc', game.description_raw)
     if(!game){
         return(
             <h1>Oops! something went wrong</h1>
         )
     }
     return(
+        <main>
         <div>
             {/* <h1>Game Page</h1> */}
-            <h2>{game.external}</h2>
             <img 
                 src={game.background_image}
-                
+                alt={game.name}
             />
-            <p>Retail: {deals}</p>
-            <p>Current price: {price} </p>
+        </div>
+        <div 
+            style={{
+                backgroundColor: "0f0f0f",
+                width: "100%",
+                height: "100%",
+            }}
+        >
+            <h1>{game.name}</h1>
+            <p>{game.rating}</p>
+            
             
             {/* <a href='' ></a> */}
         </div>
+        </main>
     )
 }
 export default GamePage;
