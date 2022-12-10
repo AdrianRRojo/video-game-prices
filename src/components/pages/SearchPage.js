@@ -11,7 +11,7 @@ function SearchPage(props){
             <div key={`games${i}`}>
                 <Link to={`/game/${i}`}>
                     <img 
-                        src={game.thumb}
+                        src={game.background_image}
                         alt={game.external} 
                     />
                     <h2>{game.external}</h2>
@@ -40,7 +40,7 @@ function SearchPage(props){
 }
 return(
 // TODO: I am implementing tailwind components to redesign the home page.
-    <div className="text-center">
+    <div className="App">
         &nbsp;
         <form onSubmit={handleSubmit}>
             <label htmlFor='input'>Search:</label>

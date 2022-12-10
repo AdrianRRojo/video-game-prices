@@ -31,15 +31,33 @@ function App() {
     setSearchQuery(e.target.value);
   };
   
+  //* First API CheapShark
+  // useEffect(() => {
+  //   const getDeals = async () => {
+  //     try{
+  //       const url = `https://www.cheapshark.com/api/1.0/games?title=${searchQuery}`
+  //       const response = await axios.get(url)
+  //       c(response.data)
+  //       setApiResponse([...apiResponse, ...response.data])
+  //     }catch(err){
+  //       console.warn(err)
+  //     }
+  //   }
+  //   getDeals()
+  // },[searchQuery])
+
+
+  //* New API
   useEffect(() => {
-    const getDeals = async () => {
+    const getDeals = async() => {
       try{
-        const url = `https://www.cheapshark.com/api/1.0/games?title=${searchQuery}`
+        const url = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}`
         const response = await axios.get(url)
-        c(response.data)
-        setApiResponse([...apiResponse, ...response.data])
+        c("Response data", response.data)
+        setApiResponse([...apiResponse,...response.data.results])
+        c("Api Response data", apiResponse)
       }catch(err){
-        console.warn(err)
+        c(err)
       }
     }
     getDeals()
@@ -68,7 +86,8 @@ function App() {
         }
         />
       </Routes>
-       {/* <h1 className="text-3xl font-bold underline text-purple-400">
+{/* 
+       <h1 className="text-3xl font-bold underline text-purple-400">
       Hello world! home page
     </h1> */}
      </main>
