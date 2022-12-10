@@ -21,7 +21,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
 
   // saved to read later
-  const [watchList, setWatchList] = useState([])
+  // const [watchList, setWatchList] = useState([])
   
   // controlled input 
   const [inputValue, setInputValue] = useState('')
@@ -31,18 +31,36 @@ function App() {
     setSearchQuery(e.target.value);
   };
   
+  //* First API CheapShark
+  // useEffect(() => {
+  //   const getDeals = async () => {
+  //     try{
+  //       const url = `https://www.cheapshark.com/api/1.0/games?title=${searchQuery}`
+  //       const response = await axios.get(url)
+  //       c(response.data)
+  //       setApiResponse([...apiResponse, ...response.data])
+  //     }catch(err){
+  //       console.warn(err)
+  //     }
+  //   }
+  //   getDeals()
+  // },[searchQuery])
+
+
+  //* New API
   useEffect(() => {
-    const getDeals = async () => {
+    const getGames = async() => {
       try{
-        const url = `https://www.cheapshark.com/api/1.0/games?title=${searchQuery}`
+        const url = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_API_KEY}`
         const response = await axios.get(url)
-        c(response.data)
-        setApiResponse([...apiResponse, ...response.data])
+        c("Response data", response.data)
+        setApiResponse([...apiResponse,...response.data.results])
+        c("Api Response", apiResponse)
       }catch(err){
-        console.warn(err)
+        c(err)
       }
     }
-    getDeals()
+    getGames()
   },[searchQuery])
 
   return (
@@ -56,8 +74,8 @@ function App() {
             inputValue={inputValue}
             setInputValue={setInputValue}
             setSearchQuery={setSearchQuery}
-            watchList={watchList}
-            setWatchList={setWatchList}  
+            // watchList={watchList}
+            // setWatchList={setWatchList} 
           />
         }
         />
@@ -68,6 +86,10 @@ function App() {
         }
         />
       </Routes>
+{/* 
+       <h1 className="text-3xl font-bold underline text-purple-400">
+      Hello world! home page
+    </h1> */}
      </main>
     </div>
   );
